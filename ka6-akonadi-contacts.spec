@@ -1,17 +1,17 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	24.05.0
+%define		kdeappsver	24.05.1
 %define		qtver		5.15.2
 %define		kaname		akonadi-contacts
 Summary:	Akonadi Contacts
 Name:		ka6-%{kaname}
-Version:	24.05.0
+Version:	24.05.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	b2547ee79666d299c794635df1a2b1a5
+# Source0-md5:	31bb4bd7468a66c68a295cea96e5a0e4
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6Gui-devel >= 5.11.1
@@ -39,6 +39,7 @@ BuildRequires:	kf6-prison-devel >= 5.51.0
 BuildRequires:	ninja
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+Obsoletes:	ka5-%{kaname} < %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -53,6 +54,7 @@ Summary:	Header files for %{kaname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kpname}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Obsoletes:	ka5-%{kaname}-devel < %{version}
 
 %description devel
 Header files for %{kaname} development.
