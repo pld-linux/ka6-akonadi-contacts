@@ -1,17 +1,17 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	24.05.1
+%define		kdeappsver	24.05.2
 %define		qtver		5.15.2
 %define		kaname		akonadi-contacts
 Summary:	Akonadi Contacts
 Name:		ka6-%{kaname}
-Version:	24.05.1
+Version:	24.05.2
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	31bb4bd7468a66c68a295cea96e5a0e4
+# Source0-md5:	29a596f67aac696e43d473fc880ff194
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6Gui-devel >= 5.11.1
