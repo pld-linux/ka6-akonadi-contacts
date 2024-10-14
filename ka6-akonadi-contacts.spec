@@ -100,7 +100,10 @@ rm -rf $RPM_BUILD_ROOT
 %ghost %{_libdir}/libKPim6AkonadiContactCore.so.6
 %attr(755,root,root) %{_libdir}/libKPim6AkonadiContactWidgets.so.*.*
 %ghost %{_libdir}/libKPim6AkonadiContactWidgets.so.6
+%dir %{_datadir}/kf6/akonadi/contact
+%dir %{_datadir}/kf6/akonadi/contact/data
 %{_datadir}/kf6/akonadi/contact/data/zone.tab
+%dir %{_datadir}/kf6/akonadi/contact/pics
 %{_datadir}/kf6/akonadi/contact/pics/world.jpg
 %{_datadir}/qlogging-categories6/akonadi-contacts.categories
 %{_datadir}/qlogging-categories6/akonadi-contacts.renamecategories
