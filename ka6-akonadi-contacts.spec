@@ -2,47 +2,73 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	24.08.2
-%define		qtver		5.15.2
+%define		kdeappsver	%{version}
+# packages version, not cmake config version (which is 6.2.2)
+%define		ka_ver		%{version}
+%define		kf_ver		6.3.0
+%define		qt_ver		6.6.0
 %define		kaname		akonadi-contacts
 Summary:	Akonadi Contacts
 Summary(pl.UTF-8):	Komponent kontaktów dla Akonadi
 Name:		ka6-%{kaname}
 Version:	24.08.2
-Release:	2
+Release:	3
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
 # Source0-md5:	53f220a0faa68621b5df2e449ca365a8
 URL:		https://kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6Gui-devel >= 5.11.1
-BuildRequires:	Qt6Test-devel
-BuildRequires:	Qt6Widgets-devel
+BuildRequires:	Qt6Core-devel >= %{qt_ver}
+BuildRequires:	Qt6Gui-devel >= %{qt_ver}
+BuildRequires:	Qt6Test-devel >= %{qt_ver}
+BuildRequires:	Qt6Widgets-devel >= %{qt_ver}
 BuildRequires:	cmake >= 3.20
 BuildRequires:	gettext-devel
 BuildRequires:	gpgme-qt6-devel
-BuildRequires:	ka6-akonadi-devel >= %{kdeappsver}
-BuildRequires:	ka6-grantleetheme-devel >= %{kdeappsver}
-BuildRequires:	ka6-kmime-devel >= %{kdeappsver}
-BuildRequires:	ka6-libkleo-devel >= %{kdeappsver}
-BuildRequires:	kf6-extra-cmake-modules >= 5.51.0
-BuildRequires:	kf6-kcmutils-devel >= 5.87.0
-BuildRequires:	kf6-kcodecs-devel >= 5.51.0
-BuildRequires:	kf6-kcompletion-devel >= 5.51.0
-BuildRequires:	kf6-kcontacts-devel >= 5.65.0
-BuildRequires:	kf6-kdbusaddons-devel >= 5.51.0
-BuildRequires:	kf6-ki18n-devel >= 5.51.0
-BuildRequires:	kf6-kiconthemes-devel >= 5.51.0
-BuildRequires:	kf6-kio-devel >= 5.51.0
-BuildRequires:	kf6-kitemmodels-devel >= 5.87.0
-BuildRequires:	kf6-ktextwidgets-devel >= 5.51.0
-BuildRequires:	kf6-prison-devel >= 5.51.0
+BuildRequires:	ka6-akonadi-devel >= %{ka_ver}
+BuildRequires:	ka6-grantleetheme-devel >= %{ka_ver}
+BuildRequires:	ka6-kmime-devel >= %{ka_ver}
+BuildRequires:	kf6-extra-cmake-modules >= %{kf_ver}
+BuildRequires:	kf6-kcodecs-devel >= %{kf_ver}
+BuildRequires:	kf6-kcolorscheme-devel >= %{kf_ver}
+BuildRequires:	kf6-kcompletion-devel >= %{kf_ver}
+BuildRequires:	kf6-kcontacts-devel >= %{kf_ver}
+BuildRequires:	kf6-kcoreaddons-devel >= %{kf_ver}
+BuildRequires:	kf6-ki18n-devel >= %{kf_ver}
+BuildRequires:	kf6-kiconthemes-devel >= %{kf_ver}
+BuildRequires:	kf6-kio-devel >= %{kf_ver}
+BuildRequires:	kf6-kservice-devel >= %{kf_ver}
+BuildRequires:	kf6-ktextaddons-devel >= 1.5.4
+BuildRequires:	kf6-ktexttemplate-devel
+BuildRequires:	kf6-ktextwidgets-devel >= %{kf_ver}
+BuildRequires:	kf6-kwidgetsaddons-devel >= %{kf_ver}
+BuildRequires:	kf6-kxmlgui-devel >= %{kf_ver}
+BuildRequires:	kf6-prison-devel >= %{kf_ver}
 BuildRequires:	ninja
 BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	qt6-build >= %{qt_ver}
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Obsoletes:	ka5-%{kaname} < %{version}
+Requires:	Qt6Core >= %{qt_ver}
+Requires:	Qt6Gui >= %{qt_ver}
+Requires:	Qt6Widgets >= %{qt_ver}
+Requires:	ka6-akonadi >= %{ka_ver}
+Requires:	ka6-grantleetheme >= %{ka_ver}
+Requires:	ka6-kmime >= %{ka_ver}
+Requires:	kf6-kcodecs >= %{kf_ver}
+Requires:	kf6-kcolorscheme >= %{kf_ver}
+Requires:	kf6-kcompletion >= %{kf_ver}
+Requires:	kf6-kcontacts >= %{kf_ver}
+Requires:	kf6-kcoreaddons >= %{kf_ver}
+Requires:	kf6-ki18n >= %{kf_ver}
+Requires:	kf6-kiconthemes >= %{kf_ver}
+Requires:	kf6-kio >= %{kf_ver}
+Requires:	kf6-ktextaddons >= 1.5.4
+Requires:	kf6-ktextwidgets >= %{kf_ver}
+Requires:	kf6-kwidgetsaddons >= %{kf_ver}
+Requires:	kf6-kxmlgui >= %{kf_ver}
+Requires:	kf6-prison >= %{kf_ver}
+Obsoletes:	ka5-akonadi-contacts < 24
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,7 +89,11 @@ Summary:	Header files for %{kaname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kpname}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	ka5-%{kaname}-devel < %{version}
+Requires:	Qt6Widgets-devel >= %{qt_ver}
+Requires:	ka6-akonadi-devel >= %{ka_ver}
+Requires:	ka6-grantleetheme-devel >= %{ka_ver}
+Requires:	kf6-kcontacts-devel >= %{kf_ver}
+Obsoletes:	ka5-akonadi-contacts-devel < 24
 
 %description devel
 Header files for %{kaname} development.
@@ -92,7 +122,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %ninja_install -C build
 
-%find_lang %{kaname} --all-name --with-kde
+# akonadicontact6 and akonadicontact6-serializer domains
+%find_lang %{kaname} --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -102,6 +133,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
+%doc README.md
 %attr(755,root,root) %{_libdir}/libKPim6AkonadiContactCore.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiContactCore.so.6
 %attr(755,root,root) %{_libdir}/libKPim6AkonadiContactWidgets.so.*.*.*
