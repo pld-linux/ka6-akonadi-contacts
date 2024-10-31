@@ -1,10 +1,12 @@
 #
 # Conditional build:
-%bcond_with	tests		# build with tests
+%bcond_with	tests		# test suite
+
 %define		kdeappsver	24.08.2
 %define		qtver		5.15.2
 %define		kaname		akonadi-contacts
 Summary:	Akonadi Contacts
+Summary(pl.UTF-8):	Komponent kontaktów dla Akonadi
 Name:		ka6-%{kaname}
 Version:	24.08.2
 Release:	2
@@ -12,7 +14,7 @@ License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
 # Source0-md5:	53f220a0faa68621b5df2e449ca365a8
-URL:		http://www.kde.org/
+URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6Gui-devel >= 5.11.1
 BuildRequires:	Qt6Test-devel
@@ -50,6 +52,12 @@ domain-specific KContacts library. It provides jobs, models and other
 helpers to make working with contacts and addressbooks through Akonadi
 easier.
 
+%description -l pl.UTF-8
+Akonadi Contacts to biblioteka efektywnie łącząca niezależne od typów
+API bibliotek klienckich Akonadi oraz bibliotekę KContacts. Zapewnia
+funkcje pomocnicze dla zadań, modeli itp., ułatwiające pracę z
+kontaktami i książkami adresowymi poprzez Akonadi.
+
 %package devel
 Summary:	Header files for %{kaname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kpname}
@@ -72,15 +80,16 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DKDE_INSTALL_DOCBUNDLEDIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+
 %ninja_build -C build
 
 %if %{with tests}
 ctest --test-dir build
 %endif
 
-
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %ninja_install -C build
 
 %find_lang %{kaname} --all-name --with-kde
@@ -93,27 +102,23 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libKPim6AkonadiContactCore.so.*.*.*
+%ghost %{_libdir}/libKPim6AkonadiContactCore.so.6
+%attr(755,root,root) %{_libdir}/libKPim6AkonadiContactWidgets.so.*.*.*
+%ghost %{_libdir}/libKPim6AkonadiContactWidgets.so.6
 %attr(755,root,root) %{_libdir}/qt6/plugins/akonadi_serializer_addressee.so
 %attr(755,root,root) %{_libdir}/qt6/plugins/akonadi_serializer_contactgroup.so
 %{_datadir}/akonadi/plugins/serializer/akonadi_serializer_addressee.desktop
 %{_datadir}/akonadi/plugins/serializer/akonadi_serializer_contactgroup.desktop
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiContactCore.so.*.*
-%ghost %{_libdir}/libKPim6AkonadiContactCore.so.6
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiContactWidgets.so.*.*
-%ghost %{_libdir}/libKPim6AkonadiContactWidgets.so.6
-%dir %{_datadir}/kf6/akonadi/contact
-%dir %{_datadir}/kf6/akonadi/contact/data
-%{_datadir}/kf6/akonadi/contact/data/zone.tab
-%dir %{_datadir}/kf6/akonadi/contact/pics
-%{_datadir}/kf6/akonadi/contact/pics/world.jpg
+%{_datadir}/kf6/akonadi/contact
 %{_datadir}/qlogging-categories6/akonadi-contacts.categories
 %{_datadir}/qlogging-categories6/akonadi-contacts.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
+%{_libdir}/libKPim6AkonadiContactCore.so
+%{_libdir}/libKPim6AkonadiContactWidgets.so
 %{_includedir}/KPim6/AkonadiContactCore
 %{_includedir}/KPim6/AkonadiContactWidgets
 %{_libdir}/cmake/KPim6AkonadiContactCore
 %{_libdir}/cmake/KPim6AkonadiContactWidgets
-%{_libdir}/libKPim6AkonadiContactCore.so
-%{_libdir}/libKPim6AkonadiContactWidgets.so
