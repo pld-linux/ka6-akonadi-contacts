@@ -37,6 +37,7 @@ BuildRequires:	kf6-kitemmodels-devel >= 5.87.0
 BuildRequires:	kf6-ktextwidgets-devel >= 5.51.0
 BuildRequires:	kf6-prison-devel >= 5.51.0
 BuildRequires:	ninja
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Obsoletes:	ka5-%{kaname} < %{version}
