@@ -24,7 +24,6 @@ BuildRequires:	Qt6Test-devel >= %{qt_ver}
 BuildRequires:	Qt6Widgets-devel >= %{qt_ver}
 BuildRequires:	cmake >= 3.20
 BuildRequires:	gettext-devel
-BuildRequires:	gpgme-qt6-devel
 BuildRequires:	ka6-akonadi-devel >= %{ka_ver}
 BuildRequires:	ka6-grantleetheme-devel >= %{ka_ver}
 BuildRequires:	ka6-kmime-devel >= %{ka_ver}
@@ -46,6 +45,7 @@ BuildRequires:	kf6-kxmlgui-devel >= %{kf_ver}
 BuildRequires:	kf6-prison-devel >= %{kf_ver}
 BuildRequires:	ninja
 BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	qgpgme-qt6-devel
 BuildRequires:	qt6-build >= %{qt_ver}
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
