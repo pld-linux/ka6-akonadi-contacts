@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	25.08.2
+%define		kdeappsver	25.08.3
 # packages version, not cmake config version (which is 6.2.2)
 %define		ka_ver		%{version}
 %define		kf_ver		6.3.0
@@ -11,12 +11,12 @@
 Summary:	Akonadi Contacts
 Summary(pl.UTF-8):	Komponent kontaktów dla Akonadi
 Name:		ka6-%{kaname}
-Version:	25.08.2
-Release:	2
+Version:	25.08.3
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	473e97f27a3129753c06e03e9dd361f3
+# Source0-md5:	a22f0f3971fe21584e2d0eab13374f1d
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6Gui-devel >= %{qt_ver}
@@ -44,9 +44,9 @@ BuildRequires:	kf6-kwidgetsaddons-devel >= %{kf_ver}
 BuildRequires:	kf6-kxmlgui-devel >= %{kf_ver}
 BuildRequires:	kf6-prison-devel >= %{kf_ver}
 BuildRequires:	ninja
-BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	qgpgme-qt6-devel
 BuildRequires:	qt6-build >= %{qt_ver}
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	Qt6Core >= %{qt_ver}
@@ -135,12 +135,12 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
 %doc README.md
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiContactCore.so.*.*.*
+%{_libdir}/libKPim6AkonadiContactCore.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiContactCore.so.6
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiContactWidgets.so.*.*.*
+%{_libdir}/libKPim6AkonadiContactWidgets.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiContactWidgets.so.6
-%attr(755,root,root) %{_libdir}/qt6/plugins/akonadi_serializer_addressee.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/akonadi_serializer_contactgroup.so
+%{_libdir}/qt6/plugins/akonadi_serializer_addressee.so
+%{_libdir}/qt6/plugins/akonadi_serializer_contactgroup.so
 %{_datadir}/akonadi/plugins/serializer/akonadi_serializer_addressee.desktop
 %{_datadir}/akonadi/plugins/serializer/akonadi_serializer_contactgroup.desktop
 %{_datadir}/kf6/akonadi/contact
