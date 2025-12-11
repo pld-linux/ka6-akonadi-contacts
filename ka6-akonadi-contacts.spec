@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	25.08.3
+%define		kdeappsver	25.12.0
 # packages version, not cmake config version (which is 6.2.2)
 %define		ka_ver		%{version}
 %define		kf_ver		6.3.0
@@ -11,12 +11,12 @@
 Summary:	Akonadi Contacts
 Summary(pl.UTF-8):	Komponent kontaktów dla Akonadi
 Name:		ka6-%{kaname}
-Version:	25.08.3
-Release:	2
+Version:	25.12.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	a22f0f3971fe21584e2d0eab13374f1d
+# Source0-md5:	938dd3444cdbdc11ffbd69453681b6ec
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6Gui-devel >= %{qt_ver}
@@ -37,7 +37,7 @@ BuildRequires:	kf6-ki18n-devel >= %{kf_ver}
 BuildRequires:	kf6-kiconthemes-devel >= %{kf_ver}
 BuildRequires:	kf6-kio-devel >= %{kf_ver}
 BuildRequires:	kf6-kservice-devel >= %{kf_ver}
-BuildRequires:	kf6-ktextaddons-devel >= 1.5.4
+BuildRequires:	kf6-ktextaddons-devel >= 1.8.0
 BuildRequires:	kf6-ktexttemplate-devel
 BuildRequires:	kf6-ktextwidgets-devel >= %{kf_ver}
 BuildRequires:	kf6-kwidgetsaddons-devel >= %{kf_ver}
@@ -63,7 +63,7 @@ Requires:	kf6-kcoreaddons >= %{kf_ver}
 Requires:	kf6-ki18n >= %{kf_ver}
 Requires:	kf6-kiconthemes >= %{kf_ver}
 Requires:	kf6-kio >= %{kf_ver}
-Requires:	kf6-ktextaddons >= 1.5.4
+Requires:	kf6-ktextaddons >= 1.8.0
 Requires:	kf6-ktextwidgets >= %{kf_ver}
 Requires:	kf6-kwidgetsaddons >= %{kf_ver}
 Requires:	kf6-kxmlgui >= %{kf_ver}
