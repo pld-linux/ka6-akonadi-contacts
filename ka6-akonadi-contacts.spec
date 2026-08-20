@@ -2,21 +2,21 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	26.04.3
+%define		kdeappsver	26.08.0
 # packages version, not cmake config version (which is 6.2.2)
 %define		ka_ver		%{version}
-%define		kf_ver		6.3.0
+%define		kf_ver		6.29.0
 %define		qt_ver		6.6.0
 %define		kaname		akonadi-contacts
 Summary:	Akonadi Contacts
 Summary(pl.UTF-8):	Komponent kontaktów dla Akonadi
 Name:		ka6-%{kaname}
-Version:	26.04.3
+Version:	26.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	675aa35456bd4a6a505ea3c706233b4b
+# Source0-md5:	439c968ffc8bb378db384a0aadc171db
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6Gui-devel >= %{qt_ver}
@@ -26,7 +26,6 @@ BuildRequires:	cmake >= 3.20
 BuildRequires:	gettext-devel
 BuildRequires:	ka6-akonadi-devel >= %{ka_ver}
 BuildRequires:	ka6-grantleetheme-devel >= %{ka_ver}
-BuildRequires:	ka6-kmime-devel >= %{ka_ver}
 BuildRequires:	kf6-extra-cmake-modules >= %{kf_ver}
 BuildRequires:	kf6-kcodecs-devel >= %{kf_ver}
 BuildRequires:	kf6-kcolorscheme-devel >= %{kf_ver}
@@ -36,8 +35,9 @@ BuildRequires:	kf6-kcoreaddons-devel >= %{kf_ver}
 BuildRequires:	kf6-ki18n-devel >= %{kf_ver}
 BuildRequires:	kf6-kiconthemes-devel >= %{kf_ver}
 BuildRequires:	kf6-kio-devel >= %{kf_ver}
+BuildRequires:	kf6-kmime-devel >= %{kf_ver}
 BuildRequires:	kf6-kservice-devel >= %{kf_ver}
-BuildRequires:	kf6-ktextaddons-devel >= 1.8.0
+BuildRequires:	kf6-ktextaddons-devel >= 2.1.2
 BuildRequires:	kf6-ktexttemplate-devel
 BuildRequires:	kf6-ktextwidgets-devel >= %{kf_ver}
 BuildRequires:	kf6-kwidgetsaddons-devel >= %{kf_ver}
@@ -54,7 +54,6 @@ Requires:	Qt6Gui >= %{qt_ver}
 Requires:	Qt6Widgets >= %{qt_ver}
 Requires:	ka6-akonadi >= %{ka_ver}
 Requires:	ka6-grantleetheme >= %{ka_ver}
-Requires:	ka6-kmime >= %{ka_ver}
 Requires:	kf6-kcodecs >= %{kf_ver}
 Requires:	kf6-kcolorscheme >= %{kf_ver}
 Requires:	kf6-kcompletion >= %{kf_ver}
@@ -63,7 +62,8 @@ Requires:	kf6-kcoreaddons >= %{kf_ver}
 Requires:	kf6-ki18n >= %{kf_ver}
 Requires:	kf6-kiconthemes >= %{kf_ver}
 Requires:	kf6-kio >= %{kf_ver}
-Requires:	kf6-ktextaddons >= 2.0.0
+Requires:	kf6-kmime >= %{kf_ver}
+Requires:	kf6-ktextaddons >= 2.1.2
 Requires:	kf6-ktextwidgets >= %{kf_ver}
 Requires:	kf6-kwidgetsaddons >= %{kf_ver}
 Requires:	kf6-kxmlgui >= %{kf_ver}
