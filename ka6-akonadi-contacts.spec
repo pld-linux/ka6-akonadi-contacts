@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	26.08.1
+%define		kdeappsver	26.08.2
 # packages version, not cmake config version (which is 6.2.2)
 %define		ka_ver		%{version}
 %define		kf_ver		6.29.0
@@ -11,12 +11,12 @@
 Summary:	Akonadi Contacts
 Summary(pl.UTF-8):	Komponent kontaktów dla Akonadi
 Name:		ka6-%{kaname}
-Version:	26.08.1
+Version:	26.08.2
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	a50c15ab4d8bebf4badd5c6d148b17fe
+# Source0-md5:	5b215dfb62d14bcb0e1c4108bb8fad33
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6Gui-devel >= %{qt_ver}
